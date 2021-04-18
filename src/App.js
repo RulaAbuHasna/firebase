@@ -1,7 +1,7 @@
 import './App.scss';
-import './components/signin.component';
-import SignIn from './components/signin.component';
-import SignUp from './components/signup.component';
+import './components/signin/signin.component';
+import SignIn from './components/signin/signin.component';
+import SignUp from './components/signup/signup.component';
 import Header from './components/header/header.component'
 import {
   BrowserRouter as Router,
@@ -24,7 +24,7 @@ class App extends React.Component {
   componentDidMount() {
     //open messgaing sysgtem whenever a change happen to the app the serivce send us a new obj
     //open subscription 
-    this.unsubscribeFromAuth = auth.onAuthStateChanged(async user => {
+    this.unsubscribeFromAuth = auth.onAuthStateChanged(async user => { //returns a function that lets us unsubscribe
       this.setState({ user: user }) //i can just save the user i get from the db and useit orrr get the ref of it 
       //console.log(createUserProfileDoc(user)) //exsists? false? save it by userref.set() otherwise return the ref
       if (user) {

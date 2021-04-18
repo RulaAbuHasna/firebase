@@ -69,10 +69,10 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
+Using Firebase for the first time! (addtion to React (with hooks)/MaterialUI/SCSS)
 
+<br>
 
-
-Using Firebase for the first time!
 features:
--google auth for the sign in 
--email sign up and sign in 
+-google auth for the sign in<br>
+-email sign up and sign in<br>
