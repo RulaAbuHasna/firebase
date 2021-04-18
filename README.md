@@ -73,3 +73,6 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 
 Using Firebase for the first time!
+features:
+-google auth for the sign in 
+-email sign up and sign in 
