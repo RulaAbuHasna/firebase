@@ -9,6 +9,7 @@ import {
 } from "react-router-dom";
 import { auth, createUserProfileDoc } from './firebase/firebase.utils';
 import React from 'react';
+import HomePage from './components/homepage/homepage.component';
 
 
 class App extends React.Component {
@@ -52,10 +53,11 @@ class App extends React.Component {
   render() {
     return (
       <div className="App" >
-        <Header user={this.state.user} />
         <Router>
+          <Header user={this.state.user} />
           <Route exact path='/signIn' component={SignIn} />
-          <Route exact path='/SignUp' component={SignUp} />
+          <Route exact path='/signUp' component={SignUp} />
+          <Route exact path='/main' component={() => <HomePage user={this.state.user} />} />
         </Router>
         {/* <div id="first">first block</div>
       <div id="second">second block</div>

@@ -13,6 +13,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { useState } from 'react';
 //firebase setup
 import { auth, signInWithGoogle } from '../../firebase/firebase.utils';
+import { useHistory } from 'react-router-dom';
 
 function Copyright() {
   return (
@@ -64,6 +65,7 @@ export default function SignIn(props) {
   const classes = useStyles();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  let history = useHistory();
 
   let handleChange = (e) => {
     e.preventDefault();
@@ -83,6 +85,7 @@ export default function SignIn(props) {
       })
       .catch((err) => {
         console.log(err);
+        alert(err.message);
       });
   };
 
@@ -143,7 +146,13 @@ export default function SignIn(props) {
               s
               onClick={(e) => {
                 e.preventDefault();
-                signInWithGoogle();
+                signInWithGoogle()
+                  .then((res) => {
+                    history.push('./main');
+                  })
+                  .catch((err) => {
+                    alert('please try again!');
+                  });
               }}
             >
               Sign In With Google

@@ -1,10 +1,9 @@
-.option {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+#name {
+  margin: 0px 7px;
+  color: rgb(148, 223, 134);
+  font-weight: bolder;
 }
 
-.signInAndOut{
-    position: relative;
-    left:1000px; 
+.second {
+  margin-left: 800px;
 }

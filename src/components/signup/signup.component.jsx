@@ -10,6 +10,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import { useState } from 'react';
 import { auth, createUserProfileDoc } from '../../firebase/firebase.utils';
+import { useHistory } from 'react-router';
 
 function Copyright() {
   return (
@@ -63,16 +64,17 @@ export default function SignUp(props) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [passwordConfirm, setPasswordConfirm] = useState('');
+  let history = useHistory();
 
   let handleChange = async (e) => {
     e.preventDefault();
     let name = e.target.name;
     let val = e.target.value;
-    name == 'email'
+    name === 'email'
       ? setEmail(val)
-      : name == 'password'
+      : name === 'password'
       ? setPassword(val)
-      : name == 'passwordConfirm'
+      : name === 'passwordConfirm'
       ? setPasswordConfirm(val)
       : setNameDisplay(val);
   };
@@ -93,6 +95,7 @@ export default function SignUp(props) {
             setPassword('');
             setNameDisplay('');
             setPasswordConfirm('');
+            history.pushState('./main');
           })
           .catch((err) => {
             console.log('couldnt save it to DB line 93');

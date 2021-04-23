@@ -24,8 +24,42 @@ export const createUserProfileDoc = async (userAuth, additionalData) => {
             .then((res) => { console.log(res, 'saved to DB') })
             .catch((err) => console.log(err, "err while saving the data"));
     }
-    console.log(snapShot)
+    // console.log(snapShot)
     return userRef;
+}
+
+//saving the texts for each single user
+export const saveText = async (txt, id) => {
+    if (!id) return;
+    // const userRef = firestore.doc('users/random12') //returns a ref to the doc not the obj itself which technically doesnt exsit
+    const ref = firestore.collection('users').doc(id).collection('texts').doc();//is this user exist in the DB? 
+    console.log(ref, " here")
+    //const snapShot = await ref.get(); //gets me the obj 'simply represents the data'
+    console.log(ref);
+    const createdAt = new Date();
+    ref.set({ txt, createdAt }) //save to DB
+        .then((res) => { console.log(res, 'saved to DB') })
+        .catch((err) => console.log(err, "err while saving the data"));
+
+    // console.log(snapShot)
+    return ref;
+}
+
+export const getTexts = async (id) => {
+    if (!id) return;
+    // const userRef = firestore.doc('users/random12') //returns a ref to the doc not the obj itself which technically doesnt exsit
+    const ref = firestore.collection('users').doc(id).collection('texts');//is this user exist in the DB? 
+    console.log(ref, " here")
+    const snapShot = await ref.get(); //gets me the obj 'simply represents the data'
+    //each one has the property of snapShot.data
+    // if (snapShot.size > 0)
+    //     snapShot.docs.forEach(doc => {
+    //         const data = doc.data();
+    //         console.log(data)
+    //     })
+
+    // console.log(snapShot)
+    if(snapShot.size > 0)return snapShot.docs;
 }
 
 firebase.initializeApp(config);
@@ -33,6 +67,7 @@ firebase.initializeApp(config);
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
 
+//google auth
 const provider = new firebase.auth.GoogleAuthProvider();
 provider.setCustomParameters({ 'prompt': 'select_account' });
 export const signInWithGoogle = function () {
@@ -42,6 +77,7 @@ export const signInWithGoogle = function () {
         .then((result) => {
             /** @type {firebase.auth.OAuthCredential} */
             console.log(result)
+
         }).catch((error) => {
             // Handle Errors here.
             console.log(error)
