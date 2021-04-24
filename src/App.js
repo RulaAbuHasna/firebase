@@ -2,7 +2,7 @@ import './App.scss';
 import './components/signin/signin.component';
 import SignIn from './components/signin/signin.component';
 import SignUp from './components/signup/signup.component';
-import Header from './components/header/header.component'
+import Header from './components/header/header.component';
 import {
   BrowserRouter as Router,
   Route,
@@ -59,9 +59,6 @@ class App extends React.Component {
           <Route exact path='/signUp' component={SignUp} />
           <Route exact path='/main' component={() => <HomePage user={this.state.user} />} />
         </Router>
-        {/* <div id="first">first block</div>
-      <div id="second">second block</div>
-      <div id="third">third block</div> */}
       </div>
     );
   }

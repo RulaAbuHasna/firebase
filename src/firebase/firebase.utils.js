@@ -49,7 +49,6 @@ export const getTexts = async (id) => {
     if (!id) return;
     // const userRef = firestore.doc('users/random12') //returns a ref to the doc not the obj itself which technically doesnt exsit
     const ref = firestore.collection('users').doc(id).collection('texts');//is this user exist in the DB? 
-    console.log(ref, " here")
     const snapShot = await ref.get(); //gets me the obj 'simply represents the data'
     //each one has the property of snapShot.data
     // if (snapShot.size > 0)
@@ -59,7 +58,17 @@ export const getTexts = async (id) => {
     //     })
 
     // console.log(snapShot)
-    if(snapShot.size > 0)return snapShot.docs;
+    if (snapShot.size > 0) return snapShot.docs;
+}
+
+export const deleteText = async (userId, textId) => {
+    if (!userId || !textId) return;
+    let ref = firestore.collection('users').doc(userId).collection('texts').doc(textId);
+    ref.delete().then((res) => {
+        console.log(res)
+    }).catch((err) => {
+        console.log(err)
+    })
 }
 
 firebase.initializeApp(config);

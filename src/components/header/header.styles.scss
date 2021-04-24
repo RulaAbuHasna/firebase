@@ -5,5 +5,9 @@
 }
 
 .second {
-  margin-left: 800px;
+  position: absolute;
+  right:100px;
+  :hover{
+    cursor: pointer;
+  }
 }

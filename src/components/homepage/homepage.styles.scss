@@ -3,25 +3,26 @@
     'Lucida Sans', Arial, sans-serif;
   color: black;
   margin: auto;
-  #welcoming {
+  margin-top: 100px;
+  display: flex;
+  margin #welcoming {
     font-size: 17px;
   }
 }
+.first-block {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  right: 50px;
+}
 
 textarea {
-  width: 300px;
+  width: 600px;
   height: 200px;
   margin: 20px auto;
   padding: 5px;
-}
-
-.card {
-  width: 300px;
-  margin: 20px auto;
-  padding: 20px;
-  color: rgb(11, 11, 88);
-  background-color: lightblue;
   border-radius: 10px;
+  resize: none;
 }
 
 button {
@@ -39,3 +40,18 @@ button {
     background-color: rgb(126, 16, 16);
   }
 }
+
+#note {
+  color: rgb(109, 20, 20);
+  background-color: rgb(228, 222, 222);
+  border-radius: 10px;
+  font-weight: bolder;
+  width: 400px;
+  height: 100px;
+  padding-top: 40px;
+  margin: 100px auto;
+  font-family: 'Open Sans', sans-serif;
+  text-align: center;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
