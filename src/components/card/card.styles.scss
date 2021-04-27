@@ -9,8 +9,45 @@
   display: flex;
   flex-flow: column;
   width: 400px;
+  transition: 3s;
+  .edit {
+    height: 30px;
+    border-radius: 10px;
+    outline: none;
+    padding: 7px;
+    margin-bottom: 10px;
+    color: rgb(9, 9, 70);
+    &:hover {
+      background-color: rgb(255, 255, 255);
+    }
+  }
+  .row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+  .edit {
+    background-color: #f3f3f3;
+    color: #5d0e0e;
+  }
 }
-.deleteBtn {
+.cardBtn {
   width: 70px;
   height: 30px;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 10px;
 }
+
+.hiddenCard {
+  width: 430px;
+  height: 100px;
+  margin: 20px auto;
+  padding-top: 50px;
+  border-radius: 10px;
+  background-color: rgb(12, 4, 4);
+  color: wheat;
+  transition: 3s;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');

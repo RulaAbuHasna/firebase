@@ -33,9 +33,9 @@ export const saveText = async (txt, id) => {
     if (!id) return;
     // const userRef = firestore.doc('users/random12') //returns a ref to the doc not the obj itself which technically doesnt exsit
     const ref = firestore.collection('users').doc(id).collection('texts').doc();//is this user exist in the DB? 
-    console.log(ref, " here")
+    // console.log(ref, " here")
     //const snapShot = await ref.get(); //gets me the obj 'simply represents the data'
-    console.log(ref);
+    //console.log(ref);
     const createdAt = new Date();
     ref.set({ txt, createdAt }) //save to DB
         .then((res) => { console.log(res, 'saved to DB') })
@@ -69,6 +69,18 @@ export const deleteText = async (userId, textId) => {
     }).catch((err) => {
         console.log(err)
     })
+}
+
+export const editText = async (userId, textId, newText) => {
+    if (!userId || !textId || !newText) return;
+    let ref = firestore.collection('users').doc(userId).collection('texts').doc(textId);
+    let snapShot = await ref.get();
+    let updatedAt = new Date();
+    ref.set({
+        updatedAt,
+        txt: newText
+    }).then((res) => console.log("succefuly updated"))
+    .catch((err) => console.log("err editing"))
 }
 
 firebase.initializeApp(config);
