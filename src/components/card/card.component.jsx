@@ -65,7 +65,7 @@ export default function Card({ textId, text, userId }) {
       style={{ display: `${display}` }}
     >
       <span style={{ width: '10px', cursor: 'pointer' }} onClick={handleHide}>
-        📌
+        👀
       </span>
       {!hide ? val : 'Hidden'}
       {!hide ? (
