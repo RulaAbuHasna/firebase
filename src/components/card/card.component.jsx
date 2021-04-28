@@ -3,7 +3,7 @@ import './card.styles.scss';
 import { deleteText, editText } from '../../firebase/firebase.utils';
 import Swal from 'sweetalert2';
 
-export default function Card({ textId, text, userId }) {
+export default function Card({ textId, text, userId, index }) {
   const [display, setDisplay] = useState('');
   const [hide, setHide] = useState(false);
   const [edit, setEdit] = useState(false);
@@ -67,7 +67,7 @@ export default function Card({ textId, text, userId }) {
       <span style={{ width: '10px', cursor: 'pointer' }} onClick={handleHide}>
         👀
       </span>
-      {!hide ? val : 'Hidden'}
+      {!hide ? `${index} . ${val}` : 'Hidden'}
       {!hide ? (
         <div className='row'>
           <button onClick={handleEdit} class='cardBtn edit'>

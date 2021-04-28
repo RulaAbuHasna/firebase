@@ -9,7 +9,7 @@ export default function Header({ user }) {
   //console.log(user.displayName, ' this is the header');
   const displayDesktop = () => {
     return (
-      <Toolbar>
+      <Toolbar style={{ background: '#86C232' }}>
         <span className='first'>
           Welcome {user ? <span id='name'>{user.displayName}</span> : null} To
           My first Firebse-based App

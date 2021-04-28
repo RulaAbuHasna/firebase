@@ -170,6 +170,7 @@ export default function SignUp(props) {
               onChange={handleChange}
             />
             <Button
+              style={{ backgroundColor: 'rgb(134, 194, 50)' }}
               type='submit'
               fullWidth
               variant='contained'

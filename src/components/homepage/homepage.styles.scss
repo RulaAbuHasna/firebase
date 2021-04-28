@@ -18,26 +18,27 @@
 
 textarea {
   width: 600px;
-  height: 200px;
+  height: 400px;
   margin: 20px auto;
   padding: 5px;
   border-radius: 10px;
   resize: none;
+  font-size: 20px;
 }
 
 button {
   width: 200px;
   padding: 8px;
-  color: rgb(241, 245, 247);
+  color: black;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode',
     'Lucida Grande' 'Lucida Sans', Arial, sans-serif;
-  background-color: rgb(88, 11, 11);
+  background-color: #86c232;
   border-radius: 10px;
   font-weight: 700;
   cursor: pointer;
   border: none;
   &:hover {
-    background-color: rgb(126, 16, 16);
+    background-color: #9adf3b;
   }
 }
 

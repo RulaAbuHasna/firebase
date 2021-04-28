@@ -2,8 +2,8 @@
   width: 300px;
   margin: 20px auto;
   padding: 20px;
-  color: rgb(11, 11, 88);
-  background-color: lightblue;
+  color: rgb(255, 255, 255);
+  background-color: #222629;
   border-radius: 10px;
   overflow: hide;
   display: flex;
@@ -16,7 +16,7 @@
     outline: none;
     padding: 7px;
     margin-bottom: 10px;
-    color: rgb(9, 9, 70);
+    color: #E3AFBC(9, 9, 70);
     &:hover {
       background-color: rgb(255, 255, 255);
     }
@@ -29,7 +29,7 @@
   }
   .edit {
     background-color: #f3f3f3;
-    color: #5d0e0e;
+    color: #314618;
   }
 }
 .cardBtn {
@@ -37,15 +37,16 @@
   height: 30px;
   font-family: 'Open Sans', sans-serif;
   font-weight: 10px;
+  background-color: #86c232;
 }
 
 .hiddenCard {
   width: 430px;
   height: 100px;
   margin: 20px auto;
-  padding-top: 50px;
+  padding-top: 40px;
   border-radius: 10px;
-  background-color: #3f51b5;
+  background-color: #61892f;
   color: white;
   transition: 3s;
 }

@@ -21,10 +21,15 @@ export default function HomePage({ user }) {
     e.preventDefault();
     if (val === '') return;
     saveText(val, id)
-      .then((res) => {
+      .then((snapShot) => {
         setVal('');
-        setDependancy((preveState) => preveState + 1);
-        console.log(dependancy);
+
+        //add it to the allTexts
+        setAllTexts((prevState) => {
+          let newState = [...prevState, snapShot];
+          return newState;
+        });
+
         Swal.fire({
           icon: 'success',
           text: `Yay! it's saved`,
@@ -39,7 +44,6 @@ export default function HomePage({ user }) {
     getTexts(id)
       .then((docs) => {
         setAllTexts(docs);
-        console.log(docs);
       })
       .catch((err) => {
         console.log(err);
@@ -48,7 +52,7 @@ export default function HomePage({ user }) {
           text: `oops! we had an issue getting data`,
         });
       });
-  }, [dependancy, id]);
+  }, []);
 
   return id ? (
     <div class='container'>
@@ -65,6 +69,7 @@ export default function HomePage({ user }) {
                 return (
                   <Card
                     key={idx}
+                    index={idx + 1}
                     textId={text.id}
                     text={text.data().txt}
                     userId={id}

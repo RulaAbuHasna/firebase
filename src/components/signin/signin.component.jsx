@@ -130,6 +130,7 @@ export default function SignIn(props) {
               label='Remember me'
             />
             <Button
+              style={{ backgroundColor: 'rgb(134, 194, 50)' }}
               fullWidth
               variant='contained'
               color='primary'
@@ -139,6 +140,7 @@ export default function SignIn(props) {
               Sign In
             </Button>
             <Button
+              style={{ backgroundColor: 'rgb(134, 194, 50)' }}
               type='submit'
               fullWidth
               variant='contained'
