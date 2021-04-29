@@ -72,6 +72,7 @@ export default function HomePage({ user }) {
                     index={idx + 1}
                     textId={text.id}
                     text={text.data().txt}
+                    hidden={text.data().hidden}
                     userId={id}
                   />
                 );

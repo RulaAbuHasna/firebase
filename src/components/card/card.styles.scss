@@ -5,11 +5,12 @@
   color: rgb(255, 255, 255);
   background-color: #222629;
   border-radius: 10px;
-  overflow: hide;
+  word-break: break-word;
   display: flex;
   flex-flow: column;
   width: 400px;
   transition: 3s;
+  margin-right: 5px;
   .edit {
     height: 30px;
     border-radius: 10px;
@@ -49,6 +50,25 @@
   background-color: #61892f;
   color: white;
   transition: 3s;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #222629;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #65c43c;
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');

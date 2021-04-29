@@ -37,7 +37,7 @@ export const saveText = async (txt, id) => {
     // const snapShot = await ref.get(); //gets me the obj 'simply represents the data'
     //console.log(ref);
     const createdAt = new Date();
-    ref.set({ txt, createdAt }) //save to DB
+    ref.set({ txt, createdAt, hidden: false }) //save to DB
         .then((res) => { console.log(res, 'saved to DB') })
         .catch((err) => console.log(err, "err while saving the data"));
 
@@ -75,14 +75,32 @@ export const deleteText = async (userId, textId) => {
 export const editText = async (userId, textId, newText) => {
     if (!userId || !textId || !newText) return;
     let ref = firestore.collection('users').doc(userId).collection('texts').doc(textId);
-    let snapShot = await ref.get();
+    // let snapShot = await ref.get();
+    // console.log(snapShot.data().hidden)
     let updatedAt = new Date();
     ref.set({
         updatedAt,
-        txt: newText
+        txt: newText,
+        hidden: true
     }).then((res) => console.log("succefuly updated"))
         .catch((err) => console.log("err editing"))
 }
+
+export const hideText = async (userId, textId, newText) => {
+    if (!userId || !textId || !newText) return;
+    let ref = firestore.collection('users').doc(userId).collection('texts').doc(textId);
+    let snapShot = await ref.get();
+    let oldHidden = snapShot.data().hidden;
+    let updatedAt = new Date();
+    ref.set({
+        updatedAt,
+        txt: newText,
+        hidden: !oldHidden
+    }).then((res) => console.log("succefuly updated"))
+        .catch((err) => console.log("err editing"))
+}
+
+
 
 firebase.initializeApp(config);
 

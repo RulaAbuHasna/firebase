@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import './card.styles.scss';
-import { deleteText, editText } from '../../firebase/firebase.utils';
+import { deleteText, editText, hideText } from '../../firebase/firebase.utils';
 import Swal from 'sweetalert2';
 
-export default function Card({ textId, text, userId, index }) {
+export default function Card({ textId, text, userId, index, hidden }) {
   const [display, setDisplay] = useState('');
-  const [hide, setHide] = useState(false);
+  const [hide, setHide] = useState(hidden);
   const [edit, setEdit] = useState(false);
   const [val, setVal] = useState(text);
 
@@ -57,6 +57,21 @@ export default function Card({ textId, text, userId, index }) {
   let handleHide = (e) => {
     e.preventDefault();
     !hide ? setHide(true) : setHide(false);
+    hideText(userId, textId, val, hide)
+      .then((res) => {
+        console.log('handle the hide succeed');
+        !hide
+          ? Swal.fire({
+              icon: 'success',
+              text: `it's going to stay hidden till you unhide it!`,
+            })
+          : Swal.fire({
+              icon: 'success',
+            });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return !edit ? (
