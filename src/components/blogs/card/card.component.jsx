@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import './card.styles.scss';
-import { deleteText, editText, hideText } from '../../firebase/firebase.utils';
+import {
+  deleteText,
+  editText,
+  hideText,
+} from '../../../firebase/firebase.utils';
 import Swal from 'sweetalert2';
 
 export default function Card({ textId, text, userId, index, hidden }) {
@@ -59,15 +63,12 @@ export default function Card({ textId, text, userId, index, hidden }) {
     !hide ? setHide(true) : setHide(false);
     hideText(userId, textId, val, hide)
       .then((res) => {
-        console.log('handle the hide succeed');
         !hide
           ? Swal.fire({
               icon: 'success',
               text: `it's going to stay hidden till you unhide it!`,
             })
-          : Swal.fire({
-              icon: 'success',
-            });
+          : console.log('handle the hide succeed');
       })
       .catch((err) => {
         console.log(err);
@@ -85,10 +86,10 @@ export default function Card({ textId, text, userId, index, hidden }) {
       {!hide ? `${index} . ${val}` : 'Hidden'}
       {!hide ? (
         <div className='row'>
-          <button onClick={handleEdit} class='cardBtn edit'>
+          <button onClick={handleEdit} className='cardBtn edit'>
             Edti
           </button>
-          <button onClick={handleDelete} class='cardBtn'>
+          <button onClick={handleDelete} className='cardBtn'>
             Delete
           </button>
         </div>

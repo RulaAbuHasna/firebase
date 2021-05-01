@@ -3,13 +3,14 @@ import './components/signin/signin.component';
 import SignIn from './components/signin/signin.component';
 import SignUp from './components/signup/signup.component';
 import Header from './components/header/header.component';
+import Footer from './components/footer/footer.component';
 import {
   BrowserRouter as Router,
   Route,
 } from "react-router-dom";
 import { auth, createUserProfileDoc } from './firebase/firebase.utils';
 import React from 'react';
-import HomePage from './components/homepage/homepage.component';
+import Homepage from './components/homepage/homepage.component';
 
 
 class App extends React.Component {
@@ -57,7 +58,8 @@ class App extends React.Component {
           <Header user={this.state.user} />
           <Route exact path='/signIn' component={SignIn} />
           <Route exact path='/signUp' component={SignUp} />
-          <Route exact path='/main' component={() => <HomePage user={this.state.user} />} />
+          <Route exact path='/main' component={() => <Homepage user={this.state.user} />} />
+          <Footer />
         </Router>
       </div>
     );

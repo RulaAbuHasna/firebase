@@ -100,7 +100,48 @@ export const hideText = async (userId, textId, newText) => {
         .catch((err) => console.log("err editing"))
 }
 
+//NOTE SPACE
+export const saveNote = async (task, id) => {
+    if (!id) return;
+    // const userRef = firestore.doc('users/random12') //returns a ref to the doc not the obj itself which technically doesnt exsit
+    const ref = firestore.collection('users').doc(id).collection('notes').doc();//is this user exist in the DB? 
+    // console.log(ref, " here")
+    // const snapShot = await ref.get(); //gets me the obj 'simply represents the data'
+    //console.log(ref);
+    const createdAt = new Date();
+    ref.set({ task, createdAt, done: false }) //save to DB
+        .then((res) => { console.log(res, 'saved to DB') })
+        .catch((err) => console.log(err, "err while saving the data"));
 
+    // console.log(snapShot)
+    const snapShot = await ref.get();
+    return snapShot;
+}
+
+export const getNotes = async (id) => {
+    if (!id) return;
+    // const userRef = firestore.doc('users/random12') //returns a ref to the doc not the obj itself which technically doesnt exsit
+    const ref = firestore.collection('users').doc(id).collection('notes');//is this user exist in the DB? 
+    const snapShot = await ref.get(); //gets me the obj 'simply represents the data'
+    if (snapShot.size > 0) return snapShot.docs;
+}
+
+export const updateNote = async (userId, noteId, note) => {
+    if (!userId || !note || !noteId) return;
+    let ref = firestore.collection('users').doc(userId).collection('notes').doc(noteId);
+    let snapShot = await ref.get();
+    // console.log(snapShot.data().hidden)
+    let updatedAt = new Date();
+    let oldDone = snapShot.data().done;
+    console.log(oldDone);
+    console.log(snapShot);
+    ref.set({
+        updatedAt,
+        task: note,
+        done: !oldDone
+    }).then((res) => console.log("succefuly updated"))
+        .catch((err) => console.log("err editing"))
+}
 
 firebase.initializeApp(config);
 

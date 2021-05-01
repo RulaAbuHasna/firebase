@@ -1,0 +1,32 @@
+#title {
+  font-family: 'Norican', cursive;
+  font-size: 26px;
+}
+@import url('https://fonts.googleapis.com/css2?family=Norican&display=swap');
+
+.notes_container {
+  display: flex;
+  flex-direction: column;
+  .newTask {
+    width: 300px;
+    border: none;
+    border-bottom: solid black 2px;
+    margin: 20px 20px 0px 0px;
+    background: inherit;
+    &:focus {
+      outline: none;
+    }
+  }
+  button {
+    width: 100px;
+  }
+  #warning {
+    color: rgb(170, 30, 30);
+    font-size: 13px;
+    position: relative;
+    right: 20px;
+  }
+  .tasks {
+    margin-top: 20px;
+  }
+}
