@@ -143,6 +143,16 @@ export const updateNote = async (userId, noteId, note) => {
         .catch((err) => console.log("err editing"))
 }
 
+export const deleteNote = async (userId, textId) => {
+    if (!userId || !textId) return;
+    let ref = firestore.collection('users').doc(userId).collection('notes').doc(textId);
+    ref.delete().then((res) => {
+        console.log(res)
+    }).catch((err) => {
+        console.log(err)
+    })
+}
+
 firebase.initializeApp(config);
 
 export const auth = firebase.auth();

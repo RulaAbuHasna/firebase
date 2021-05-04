@@ -3,6 +3,7 @@ import './notes.styles.scss';
 import { saveNote, getNotes } from '../../firebase/firebase.utils';
 import Swal from 'sweetalert2';
 import Item from './item/item.component';
+import FinishedItem from './finishedItem/finishedItem.component';
 
 export default function NotesSpace({ user }) {
   let id = user ? user.uid : null;
@@ -39,6 +40,10 @@ export default function NotesSpace({ user }) {
             let newSatte = [...prevState, res];
             return newSatte;
           });
+          setInProgress((prevState) => {
+            let newSatte = [...prevState, res];
+            return newSatte;
+          });
 
           setNewTask('');
           Swal.fire({
@@ -65,29 +70,59 @@ export default function NotesSpace({ user }) {
 
   return id ? (
     <div className='notes_container'>
-      <span id='title'>Place your notes, tasks and more! 📝</span>
-      <div className='addTasks'>
-        <input
-          type='text'
-          name='addTask'
-          className='newTask'
-          onChange={handleChange}
-          value={newTask}
-        />
-        <button style={{ cursor: `${cursor}` }} onClick={handleClick}>
-          Add
-        </button>
-        <span id='warning' style={{ display: `${display}` }}>
-          {' '}
-          keep it simple, divide your work..!
-        </span>
+      <div className='first_section'>
+        <span className='title'>Place your notes, tasks and more! 📝</span>
+        <div className='ps'>"click on what you finish!"</div>
+        <div className='addTasks'>
+          <input
+            type='text'
+            name='addTask'
+            className='newTask'
+            onChange={handleChange}
+            value={newTask}
+          />
+
+          <button style={{ cursor: `${cursor}` }} onClick={handleClick}>
+            Add
+          </button>
+          <span id='warning' style={{ display: `${display}` }}>
+            {' '}
+            keep it simple, divide your work..!
+          </span>
+        </div>
+        <div className='tasks'>
+          {inProgress
+            ? inProgress.map((item, idx) => {
+                return (
+                  <Item
+                    key={idx}
+                    userId={id}
+                    noteId={item.id}
+                    note={item.data().task}
+                    checked={item.data().done}
+                  />
+                );
+              })
+            : null}
+        </div>
       </div>
-      <div className='tasks'>
-        <span style={{float:"left"}}>sort</span>
-        {tasks
-          ? tasks.map((item, idx) => {
+      <span className='second_section slide'>
+        <img
+          src={
+            'https://i.pinimg.com/564x/5d/ed/d9/5dedd98e42f51ae0de9fc010ee72c441.jpg'
+          }
+          alt='todos'
+          className=''
+        />
+      </span>
+      <div className='third_section'>
+        <span className='title'>Nice Job, you finished: 🎉</span>
+        <div className='ps'>"click on what you like to delete!"</div>
+        <div className='done'>
+          {done ? (
+            done.map((item, idx) => {
               return (
-                <Item
+                <FinishedItem
                   key={idx}
                   userId={id}
                   noteId={item.id}
@@ -96,7 +131,10 @@ export default function NotesSpace({ user }) {
                 />
               );
             })
-          : null}
+          ) : (
+            <div>let's add some Todos!</div>
+          )}
+        </div>
       </div>
     </div>
   ) : null;

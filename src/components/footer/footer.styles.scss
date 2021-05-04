@@ -1,14 +1,38 @@
 .site-footer {
   background-color: #26272b;
-  padding: 45px 0 20px;
+  padding: 81px 0 20px;
   font-size: 15px;
   line-height: 24px;
-  color: #737373;
+  color: white;
+  display: flex;
+  justify-content: space-around;
+  .about_section {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    text-align: left;
+  }
+  .links_section {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    .todos_section {
+      margin-top: 20px;
+    }
+  }
+  .section_title {
+    margin-bottom: 20px;
+    color: #86c232;
+    text-shadow: 2px 3px #10440a;
+    letter-spacing: 4px;
+  }
 }
 .social-icons {
   padding-left: 0;
   margin-bottom: 0;
   list-style: none;
+  font-size: 5px;
+  margin-top: 20px;
 }
 .social-icons li {
   display: inline-block;

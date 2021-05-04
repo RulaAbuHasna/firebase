@@ -1,4 +1,4 @@
-#title {
+.title {
   font-family: 'Norican', cursive;
   font-size: 26px;
 }
@@ -6,27 +6,73 @@
 
 .notes_container {
   display: flex;
-  flex-direction: column;
-  .newTask {
-    width: 300px;
-    border: none;
-    border-bottom: solid black 2px;
-    margin: 20px 20px 0px 0px;
-    background: inherit;
-    &:focus {
-      outline: none;
+  flex-direction: row;
+  justify-content: center;
+  background-color: white;
+  .second_section {
+    background: #efefef;
+  }
+  .second_section img {
+    width: 600px;
+    height: 600px;
+  }
+  .first_section {
+    padding: 20px;
+    margin-top: 50px;
+    .newTask {
+      width: 300px;
+      border: none;
+      border-bottom: solid black 2px;
+      margin: 20px 20px 0px 0px;
+      background: inherit;
+      &:focus {
+        outline: none;
+      }
+    }
+    button {
+      width: 100px;
+    }
+    #warning {
+      color: rgb(170, 30, 30);
+      font-size: 13px;
+      position: relative;
+      right: 20px;
+    }
+    .tasks {
+      margin-top: 31px;
+      height: 380px;
+      overflow-y: scroll;
     }
   }
-  button {
-    width: 100px;
+  .third_section {
+    width: 400px;
+    padding: 20px;
+    margin-top: 50px;
+    .done {
+      margin-top: 50px;
+      height: 380px;
+      overflow-y: scroll;
+    }
   }
-  #warning {
-    color: rgb(170, 30, 30);
-    font-size: 13px;
-    position: relative;
-    right: 20px;
+  .ps {
+    font-size: 10px;
+    color: red;
   }
-  .tasks {
-    margin-top: 20px;
+}
+@media screen and (max-width: 812px) and (min-width: 357px) {
+  .notes_container {
+    flex-direction: column;
+    .title {
+      font-size: 20px;
+    }
+    .first_section {
+      width: auto;
+    }
+    .second_section img {
+      display: none;
+    }
+    .third_section {
+      width: auto;
+    }
   }
 }

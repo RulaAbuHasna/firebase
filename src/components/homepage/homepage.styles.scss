@@ -1,0 +1,24 @@
+.main_section {
+  background: url('https://coolbackgrounds.io/images/backgrounds/index/compute-ea4c57a4.png');
+  background-size: cover;
+  height: 690px;
+  display: flex;
+  justify-content: center;
+  .main_title {
+    color: white;
+    font-size: 60px;
+    font-family: 'Nanum Pen Script', cursive;
+    margin-top: 300px;
+    text-shadow: rgb(56, 128, 60) 3px 2px 12px;
+  }
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap');
+
+@media screen and (max-width: 812px) and (min-width: 357px) {
+  .main_section {
+    .main_title {
+      margin-top: 103px;
+    }
+  }
+}

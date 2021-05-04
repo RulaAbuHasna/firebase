@@ -23,14 +23,6 @@ export default function Item({ userId, noteId, note, checked }) {
       .catch((err) => console.log(err));
   };
 
-  useEffect(() => {
-    if (done === true) {
-      setEmoji('✔️');
-      setDecoration('line-through');
-      setDone(true);
-    }
-  }, []);
-
   return (
     <div className='note'>
       {' '}

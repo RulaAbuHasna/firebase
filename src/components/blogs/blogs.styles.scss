@@ -25,6 +25,8 @@ textarea {
   border-radius: 10px;
   resize: none;
   font-size: 20px;
+  box-shadow: 3px 2px 3px grey;
+  outline: none;
 }
 
 button {
@@ -68,3 +70,32 @@ button {
 
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Norican&display=swap');
+
+@media screen and (max-width: 812px) and (min-width: 357px) {
+  .container {
+    flex-direction: column;
+    textarea {
+      width: 264px;
+    }
+    .first-block {
+      right: 0px;
+      #welcoming {
+        font-size: 20px;
+      }
+      button {
+        margin-left: 76px;
+        margin-top: -36px;
+      }
+    }
+    .getTexts {
+      margin-top: 20px;
+      .hiddenCard {
+        width: 275px;
+      }
+      .card {
+        width: 238px;
+        margin-left: 45px;
+      }
+    }
+  }
+}
