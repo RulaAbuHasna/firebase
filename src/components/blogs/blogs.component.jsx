@@ -21,10 +21,11 @@ export default function BlogsSpace({ user }) {
     if (val === '') return;
     saveText(val, id)
       .then((snapShot) => {
-        setVal('');
-
         //add it to the allTexts
         setAllTexts((prevState) => {
+          if (prevState.length === 0) {
+            return [snapShot];
+          }
           let newState = [...prevState, snapShot];
           return newState;
         });
@@ -33,6 +34,7 @@ export default function BlogsSpace({ user }) {
           icon: 'success',
           text: `Yay! it's saved`,
         });
+        console.log(allTexts);
       })
       .catch((err) => {
         console.log(err);
@@ -42,7 +44,7 @@ export default function BlogsSpace({ user }) {
   useEffect(() => {
     getTexts(id)
       .then((docs) => {
-        setAllTexts(docs);
+        setAllTexts(docs || []);
       })
       .catch((err) => {
         console.log(err);
@@ -53,7 +55,7 @@ export default function BlogsSpace({ user }) {
       });
   }, [id]);
 
-  return id ? (
+  return (
     <div className='container'>
       <div className='first-block'>
         <span id='welcoming'>
@@ -72,8 +74,8 @@ export default function BlogsSpace({ user }) {
                     key={idx}
                     index={idx + 1}
                     textId={text.id}
-                    text={text.data().txt}
-                    hidden={text.data().hidden}
+                    text={text.data() ? text.data().txt : val}
+                    hidden={text.data() ? text.data().hidden : false}
                     userId={id}
                   />
                 );
@@ -81,15 +83,6 @@ export default function BlogsSpace({ user }) {
             : null}
         </div>
       </div>
-    </div>
-  ) : (
-    <div id='note'>
-      Please{' '}
-      <a href='./signIn' style={{ color: ' rgb(196, 29, 29' }}>
-        Sign In
-      </a>{' '}
-      to be able to save new blogs, messages and notes and read your prev ones
-      🙏
     </div>
   );
 }

@@ -91,25 +91,27 @@ export default function NotesSpace({ user }) {
           </span>
         </div>
         <div className='tasks'>
-          {inProgress
-            ? inProgress.map((item, idx) => {
-                return (
-                  <Item
-                    key={idx}
-                    userId={id}
-                    noteId={item.id}
-                    note={item.data().task}
-                    checked={item.data().done}
-                  />
-                );
-              })
-            : null}
+          {inProgress ? (
+            inProgress.map((item, idx) => {
+              return (
+                <Item
+                  key={idx}
+                  userId={id}
+                  noteId={item.id}
+                  note={item.data() ? item.data().task : newTask}
+                  checked={item.data() ? item.data().done : false}
+                />
+              );
+            })
+          ) : (
+            <div> let's add some todos!</div>
+          )}
         </div>
       </div>
       <span className='second_section slide'>
         <img
           src={
-            'https://i.pinimg.com/564x/5d/ed/d9/5dedd98e42f51ae0de9fc010ee72c441.jpg'
+            'https://i.pinimg.com/originals/df/7f/95/df7f95d07520a06b46466e8e04fc46d3.jpg'
           }
           alt='todos'
           className=''
@@ -126,8 +128,8 @@ export default function NotesSpace({ user }) {
                   key={idx}
                   userId={id}
                   noteId={item.id}
-                  note={item.data().task}
-                  checked={item.data().done}
+                  note={item.data() ? item.data().task : newTask}
+                  checked={item.data() ? item.data().done : false}
                 />
               );
             })
@@ -137,5 +139,7 @@ export default function NotesSpace({ user }) {
         </div>
       </div>
     </div>
-  ) : null;
+  ) : (
+    <div> let's add some todos!</div>
+  );
 }

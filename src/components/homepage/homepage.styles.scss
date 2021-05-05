@@ -1,5 +1,5 @@
 .main_section {
-  background: url('https://coolbackgrounds.io/images/backgrounds/index/compute-ea4c57a4.png');
+  background: url('https://wallpapercave.com/wp/wp3651989.jpg');
   background-size: cover;
   height: 690px;
   display: flex;
@@ -10,6 +10,20 @@
     font-family: 'Nanum Pen Script', cursive;
     margin-top: 300px;
     text-shadow: rgb(56, 128, 60) 3px 2px 12px;
+    display: flex;
+    flex-direction: column;
+    button {
+      width: 200px;
+      height: 80px;
+      justify-content: center;
+      margin: 10px;
+      font-family: 'Nanum Pen Script', cursive;
+      border-radius: 65px;
+      font-size: 23px;
+      a {
+        color: black;
+      }
+    }
   }
 }
 

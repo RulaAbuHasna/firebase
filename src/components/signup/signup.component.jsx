@@ -95,7 +95,7 @@ export default function SignUp(props) {
             setPassword('');
             setNameDisplay('');
             setPasswordConfirm('');
-            history.pushState('./main');
+            history.push('./main');
           })
           .catch((err) => {
             console.log('couldnt save it to DB line 93');

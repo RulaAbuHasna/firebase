@@ -3,7 +3,6 @@ import './components/signin/signin.component';
 import SignIn from './components/signin/signin.component';
 import SignUp from './components/signup/signup.component';
 import Header from './components/header/header.component';
-import Footer from './components/footer/footer.component';
 import {
   BrowserRouter as Router,
   Route,
@@ -59,7 +58,6 @@ class App extends React.Component {
           <Route exact path='/signIn' component={SignIn} />
           <Route exact path='/signUp' component={SignUp} />
           <Route exact path='/main' component={() => <Homepage user={this.state.user} />} />
-          <Footer />
         </Router>
       </div>
     );

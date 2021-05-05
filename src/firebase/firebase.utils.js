@@ -42,7 +42,7 @@ export const saveText = async (txt, id) => {
         .catch((err) => console.log(err, "err while saving the data"));
 
     // console.log(snapShot)
-    const snapShot = await ref.get();
+    const snapShot = ref.get().then((res) => res).catch((err) => err)
     return snapShot;
 }
 
@@ -58,7 +58,6 @@ export const getTexts = async (id) => {
     //         console.log(data)
     //     })
 
-    // console.log(snapShot)
     if (snapShot.size > 0) return snapShot.docs;
 }
 
@@ -133,8 +132,8 @@ export const updateNote = async (userId, noteId, note) => {
     // console.log(snapShot.data().hidden)
     let updatedAt = new Date();
     let oldDone = snapShot.data().done;
-    console.log(oldDone);
-    console.log(snapShot);
+
+
     ref.set({
         updatedAt,
         task: note,

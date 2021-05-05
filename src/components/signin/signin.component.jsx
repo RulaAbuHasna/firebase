@@ -82,6 +82,7 @@ export default function SignIn(props) {
         setEmail('');
         setPassword('');
         console.log(res);
+        history.push('./main');
       })
       .catch((err) => {
         console.log(err);
