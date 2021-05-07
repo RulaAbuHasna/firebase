@@ -74,13 +74,12 @@ export const deleteText = async (userId, textId) => {
 export const editText = async (userId, textId, newText) => {
     if (!userId || !textId || !newText) return;
     let ref = firestore.collection('users').doc(userId).collection('texts').doc(textId);
-    // let snapShot = await ref.get();
     // console.log(snapShot.data().hidden)
     let updatedAt = new Date();
     ref.set({
         updatedAt,
         txt: newText,
-        hidden: true
+        hidden: true,
     }).then((res) => console.log("succefuly updated"))
         .catch((err) => console.log("err editing"))
 }
@@ -94,7 +93,7 @@ export const hideText = async (userId, textId, newText) => {
     ref.set({
         updatedAt,
         txt: newText,
-        hidden: !oldHidden
+        hidden: !oldHidden,
     }).then((res) => console.log("succefuly updated"))
         .catch((err) => console.log("err editing"))
 }
@@ -150,6 +149,24 @@ export const deleteNote = async (userId, textId) => {
     }).catch((err) => {
         console.log(err)
     })
+}
+//GENERAL >>> SHARING 
+export const shareBlog = async (userId, blog, textId) => {
+    let ref = firestore.collection('general').doc();
+    let sharedAt = new Date();
+    const snapShot = ref.get().then((res) => res).catch((err) => err)
+    ref.set({ blog, userId, sharedAt, blogId: textId }).then((res) => {
+        console.log(res, "sucessfully shared")
+    }).catch((err) => {
+        console.log(err, "err sharing the blog")
+    })
+    return snapShot;
+}
+
+export const getGeneral = async () => {
+    const ref = firestore.collection('general');//is this user exist in the DB? 
+    const snapShot = await ref.get(); //gets me the obj 'simply represents the data'
+    if (snapShot.size > 0) return snapShot.docs;
 }
 
 firebase.initializeApp(config);

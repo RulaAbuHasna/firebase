@@ -7,7 +7,6 @@ import FinishedItem from './finishedItem/finishedItem.component';
 
 export default function NotesSpace({ user }) {
   let id = user ? user.uid : null;
-  const [tasks, setTasks] = useState([]);
   const [inProgress, setInProgress] = useState([]);
   const [done, setDone] = useState([]);
 
@@ -35,11 +34,6 @@ export default function NotesSpace({ user }) {
       saveNote(newTask, id)
         .then((res) => {
           console.log(res);
-          //update the task arr
-          setTasks((prevState) => {
-            let newSatte = [...prevState, res];
-            return newSatte;
-          });
           setInProgress((prevState) => {
             let newSatte = [...prevState, res];
             return newSatte;
@@ -61,7 +55,6 @@ export default function NotesSpace({ user }) {
       .then((res) => {
         setDone(res.filter((item) => item.data().done === true));
         setInProgress(res.filter((item) => item.data().done === false));
-        setTasks(res);
       })
       .catch((err) => {
         console.log(err);
@@ -111,7 +104,7 @@ export default function NotesSpace({ user }) {
       <span className='second_section slide'>
         <img
           src={
-            'https://i.pinimg.com/originals/df/7f/95/df7f95d07520a06b46466e8e04fc46d3.jpg'
+            'https://media0.giphy.com/media/WUyQbeKHhpaHrrKJu6/giphy.gif?cid=ecf05e47iu47sjbdwkpr3v5zxhkpaliki4jfhk0vp0s0fia4&rid=giphy.gif&ct=g'
           }
           alt='todos'
           className=''

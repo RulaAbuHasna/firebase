@@ -15,11 +15,11 @@ export default function Footer() {
         <span className='section_title'>Quick Links</span>
         <span className='blogs_section'>
           {' '}
-          <a href=''>My Blogs ✨</a>
+          <a href='#myBlogs'>My Blogs ✨</a>
         </span>
         <span className='todos_section'>
           {' '}
-          <a href=''>My To dos 📝</a>
+          <a href='#myTodos'>My To dos 📝</a>
         </span>
       </section>
       <section>

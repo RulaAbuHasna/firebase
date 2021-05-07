@@ -34,6 +34,13 @@
     background-color: #f3f3f3;
     color: #314618;
   }
+  .emoji {
+    cursor: pointer;
+    &.share {
+      display: inline-flex;
+      justify-content: flex-end;
+    }
+  }
 }
 .cardBtn {
   width: 70px;
@@ -53,6 +60,9 @@
   color: white;
   transition: 3s;
   box-shadow: rgb(56, 128, 60) 3px 13px 12px;
+  .emoji {
+    cursor: pointer;
+  }
 }
 
 ::-webkit-scrollbar {

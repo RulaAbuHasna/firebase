@@ -14,7 +14,7 @@ export default function Homepae({ user }) {
             and Tasks, share them and more! Enjoy!
             <div>
               <button>
-                <a href='#blogSpace'>My Blog Space</a>
+                <a href='./general'>General Blog Space</a>
               </button>
               <button>
                 <a href='#todosSpace'>My Todos</a>

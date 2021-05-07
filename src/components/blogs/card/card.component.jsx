@@ -4,6 +4,7 @@ import {
   deleteText,
   editText,
   hideText,
+  shareBlog,
 } from '../../../firebase/firebase.utils';
 import Swal from 'sweetalert2';
 
@@ -75,14 +76,34 @@ export default function Card({ textId, text, userId, index, hidden }) {
       });
   };
 
+  let handleShare = (e) => {
+    Swal.fire({
+      icon: 'success',
+      text: `Your blog has been shared!`,
+    });
+    e.preventDefault();
+    shareBlog(userId, text, textId)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return !edit ? (
     <div
       className={!hide ? 'card' : 'hiddenCard'}
       style={{ display: `${display}` }}
     >
-      <span style={{ width: '10px', cursor: 'pointer' }} onClick={handleHide}>
+      <span className='emoji' onClick={handleHide}>
         👀
       </span>
+      {!hide ? (
+        <span className='emoji share' onClick={handleShare}>
+          🚀
+        </span>
+      ) : null}
       {!hide ? `${index} . ${val}` : 'Hidden'}
       {!hide ? (
         <div className='row'>

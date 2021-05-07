@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './item.styles.scss';
 import { updateNote } from '../../../firebase/firebase.utils';
 

@@ -10,6 +10,7 @@ import {
 import { auth, createUserProfileDoc } from './firebase/firebase.utils';
 import React from 'react';
 import Homepage from './components/homepage/homepage.component';
+import General from './components/general/general.component'
 
 
 class App extends React.Component {
@@ -58,6 +59,7 @@ class App extends React.Component {
           <Route exact path='/signIn' component={SignIn} />
           <Route exact path='/signUp' component={SignUp} />
           <Route exact path='/main' component={() => <Homepage user={this.state.user} />} />
+          <Route exact path='/general' component={() => <General user={this.state.user} />}  />
         </Router>
       </div>
     );
