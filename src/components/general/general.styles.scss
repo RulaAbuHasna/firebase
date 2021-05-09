@@ -1,0 +1,21 @@
+#general {
+  text-align: center;
+  #blogs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  #search {
+    border-radius: 10px;
+    width: 200px;
+    height: 20px;
+    outline: none;
+    border: 1px solid grey;
+  }
+  #title {
+    color: #47af84;
+    font-size: 24px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+      'Lucida Sans', Arial, sans-serif;
+  }
+}

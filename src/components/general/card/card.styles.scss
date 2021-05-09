@@ -1,0 +1,26 @@
+#container {
+  margin: 20px;
+  padding: 30px;
+  border: 1px solid black;
+  width: 500px;
+  text-align: center;
+  background-color: rgb(95, 138, 36);
+  color: white;
+  cursor: pointer;
+  &:hover {
+    background: rgb(134, 194, 50);
+  }
+}
+
+#promptContainer {
+  width: 700px;
+  height: 500px;
+  margin: 20px;
+  padding: 30px;
+  font-size: 24px;
+  border: 1px solid black;
+  background-color: rgb(95, 138, 36);
+  color: white;
+  position: relative;
+  cursor: pointer;
+}
