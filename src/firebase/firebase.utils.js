@@ -152,15 +152,25 @@ export const deleteNote = async (userId, textId) => {
 }
 //GENERAL >>> SHARING 
 export const shareBlog = async (userId, blog, textId) => {
-    let ref = firestore.collection('general').doc();
-    let sharedAt = new Date();
-    const snapShot = ref.get().then((res) => res).catch((err) => err)
-    ref.set({ blog, userId, sharedAt, blogId: textId }).then((res) => {
-        console.log(res, "sucessfully shared")
-    }).catch((err) => {
-        console.log(err, "err sharing the blog")
-    })
-    return snapShot;
+    let exsist = true; //to make sure it's not laready shared
+    return getGeneral().then((res) => {
+        res.forEach((blog) => {
+            if (blog.data().blogId === textId) {
+                exsist = false;
+            };
+        })
+        if (exsist) {
+            let ref = firestore.collection('general').doc();
+            let sharedAt = new Date();
+            ref.set({ blog, userId, sharedAt, blogId: textId }).then((res) => {
+                console.log(res, "sucessfully shared")
+            }).catch((err) => {
+                console.log(err, "err sharing the blog")
+            })
+            return true;
+        }
+        return false;
+    }).catch((err) => { console.log("doesn't exsit") })
 }
 
 export const getGeneral = async () => {
@@ -168,6 +178,58 @@ export const getGeneral = async () => {
     const snapShot = await ref.get(); //gets me the obj 'simply represents the data'
     if (snapShot.size > 0) return snapShot.docs;
 }
+
+export const deleteBlogFromGeneral = async (blogId) => {
+    const ref = firestore.collection("general").doc(blogId);
+    //const snapShot = await ref.get();
+    ref.delete().then((res) => {
+        console.log("blog deleted form general posts");
+    }).catch((err) => {
+        console.log(err, " err deleteing post in general")
+    })
+}
+
+//bookmark posts 
+export const bookmarkBlog = async (userId, additionalData) => {
+    if (!userId) return;
+    let exsit = false;
+    // const userRef = firestore.doc('users/random12') //returns a ref to the doc not the obj itself which technically doesnt exsit
+    const ref = firestore.collection('users').doc(userId).collection('bookmarks').doc();//is this user exist in the DB? 
+    //not to bookmark the same one twice checkign if it exsits
+    return getBookmarks(userId).then((res) => {
+        if (res.docs.length === 0) { //in case there is not alreayd stored// nothing to compare! 
+            const createdAt = new Date();
+            ref.set({ ...additionalData, createdAt }) //save to DB
+                .then((res) => { console.log(res, 'saved to DB') })
+                .catch((err) => console.log(err, "err while saving the data"));
+            return true;
+        }
+        res.forEach((bookmark) => {
+            if (bookmark.data().blogId === additionalData.blogId) {
+                exsit = true;
+            }
+        })
+        if (!exsit) {
+            const createdAt = new Date();
+            ref.set({ ...additionalData, createdAt }) //save to DB
+                .then((res) => { console.log(res, 'saved to DB') })
+                .catch((err) => console.log(err, "err while saving the data"));
+
+            return true;
+        }
+        return false;
+    }).catch((err) => {
+        console.log(err)
+    })
+}
+
+export const getBookmarks = async (userId) => {
+    if (!userId) return;
+    const ref = firestore.collection("users").doc(userId).collection("bookmarks");
+    let snapShot = ref.get().then((res) => res).catch((err) => console.log(err, "err getting bookmarks"))
+    return snapShot;
+}
+
 
 firebase.initializeApp(config);
 

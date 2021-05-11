@@ -77,14 +77,20 @@ export default function Card({ textId, text, userId, index, hidden }) {
   };
 
   let handleShare = (e) => {
-    Swal.fire({
-      icon: 'success',
-      text: `Your blog has been shared!`,
-    });
     e.preventDefault();
     shareBlog(userId, text, textId)
       .then((res) => {
         console.log(res);
+        if (res)
+          Swal.fire({
+            icon: 'success',
+            text: `Your blog has been shared!`,
+          });
+        else
+          Swal.fire({
+            icon: 'error',
+            text: `Already been shared!`,
+          });
       })
       .catch((err) => {
         console.log(err);

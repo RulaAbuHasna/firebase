@@ -3,8 +3,10 @@ import BlogsSpace from '../blogs/blogs.component';
 import NotesSpace from '../notes/notes.component';
 import './homepage.styles.scss';
 import Footer from '../footer/footer.component';
+import { useHistory } from 'react-router-dom';
 
 export default function Homepae({ user }) {
+  const history = useHistory();
   return user ? (
     <div>
       <div style={{ padding: ' 0px 34px' }}>
@@ -14,10 +16,14 @@ export default function Homepae({ user }) {
             and Tasks, share them and more! Enjoy!
             <div>
               <button>
-                <a href='./general'>General Blog Space</a>
+                <span onClick={() => history.push('./general')}>
+                  General Blog Space
+                </span>
               </button>
               <button>
-                <a href='#todosSpace'>My Todos</a>
+                <span onClick={() => history.push('./bookmarks')}>
+                  My Bookmarks
+                </span>
               </button>
             </div>
           </span>
