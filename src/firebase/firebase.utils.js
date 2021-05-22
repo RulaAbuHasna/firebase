@@ -224,6 +224,7 @@ export const bookmarkBlog = async (userId, additionalData) => {
 }
 
 export const getBookmarks = async (userId) => {
+    console.log(userId)
     if (!userId) return;
     const ref = firestore.collection("users").doc(userId).collection("bookmarks");
     let snapShot = ref.get().then((res) => res).catch((err) => console.log(err, "err getting bookmarks"))

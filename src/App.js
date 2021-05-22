@@ -10,7 +10,8 @@ import {
 import { auth, createUserProfileDoc } from './firebase/firebase.utils';
 import React from 'react';
 import Homepage from './components/homepage/homepage.component';
-import General from './components/general/general.component'
+import General from './components/general/general.component';
+import Bookmarks from './components/bookmarks/bookmarks.component';
 
 
 class App extends React.Component {
@@ -58,8 +59,9 @@ class App extends React.Component {
           <Header user={this.state.user} />
           <Route exact path='/signIn' component={SignIn} />
           <Route exact path='/signUp' component={SignUp} />
+          <Route exact path='/bookmarks' component={() => <Bookmarks userId={this.state.user ? this.state.user.uid : null} />} />
           <Route exact path='/main' component={() => <Homepage user={this.state.user} />} />
-          <Route exact path='/general' component={() => <General user={this.state.user} />}  />
+          <Route exact path='/general' component={() => <General user={this.state.user} />} />
         </Router>
       </div>
     );

@@ -42,7 +42,7 @@ export default function General({ user }) {
     <div id='general'>
       <div>
         <span
-          id='back'
+          className='back'
           onClick={() => {
             history.push('./main');
           }}

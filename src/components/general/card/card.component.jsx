@@ -48,32 +48,36 @@ export default function Card({ data, blog, blogUserId, curUser, blogId }) {
   };
 
   return !prompt ? (
-    <div id='container' onClick={handlePrompt} style={{ display: display }}>
+    <div>
       <span className='save' onClick={handleBookmark}>
         🔖
       </span>
-      {blog}
-      {blogUserId === curUser.uid ? (
-        <span className='del' onClick={handleDelete}>
-          🗑️
-        </span>
-      ) : null}
+      <div id='container' onClick={handlePrompt} style={{ display: display }}>
+        {blog}
+        {blogUserId === curUser.uid ? (
+          <span className='del' onClick={handleDelete}>
+            🗑️
+          </span>
+        ) : null}
+      </div>
     </div>
   ) : (
-    <div
-      id='promptContainer'
-      onClick={handlePrompt}
-      style={{ display: display }}
-    >
+    <div>
       <span className='save' onClick={handleBookmark}>
         🔖
       </span>
-      {blog}
-      {blogUserId === curUser.uid ? (
-        <span className='del' onClick={handleDelete}>
-          🗑️
-        </span>
-      ) : null}
+      <div
+        id='promptContainer'
+        onClick={handlePrompt}
+        style={{ display: display }}
+      >
+        {blog}
+        {blogUserId === curUser.uid ? (
+          <span className='del' onClick={handleDelete}>
+            🗑️
+          </span>
+        ) : null}
+      </div>
     </div>
   );
 }

@@ -1,0 +1,19 @@
+.bookmarks {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 20px;
+  flex-wrap: wrap;
+}
+.back {
+  display: flex;
+  margin: 30px;
+  cursor: pointer;
+  border: 1px solid black;
+  padding: 10px;
+  width: 60px;
+  &:hover {
+    background-color: #47af84;
+    color: white;
+  }
+}
