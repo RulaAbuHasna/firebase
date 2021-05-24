@@ -44,7 +44,7 @@ export default function General({ user }) {
         <span
           className='back'
           onClick={() => {
-            history.push('./main');
+            history.push('./');
           }}
         >
           Go Back

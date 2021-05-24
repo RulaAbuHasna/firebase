@@ -82,7 +82,7 @@ export default function SignIn() {
         setEmail('');
         setPassword('');
         console.log(res);
-        history.push('./main');
+        history.push('./');
       })
       .catch((err) => {
         console.log(err);
@@ -151,7 +151,7 @@ export default function SignIn() {
                 e.preventDefault();
                 signInWithGoogle()
                   .then((res) => {
-                    history.push('./main');
+                    history.push('./');
                   })
                   .catch((err) => {
                     alert('please try again!');

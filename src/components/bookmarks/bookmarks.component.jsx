@@ -23,7 +23,7 @@ export default function Bookmarks({ userId }) {
       <span
         className='back'
         onClick={() => {
-          history.push('./main');
+          history.push('./');
         }}
       >
         Go Back

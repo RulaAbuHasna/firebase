@@ -60,7 +60,7 @@ class App extends React.Component {
           <Route exact path='/signIn' component={SignIn} />
           <Route exact path='/signUp' component={SignUp} />
           <Route exact path='/bookmarks' component={() => <Bookmarks userId={this.state.user ? this.state.user.uid : null} />} />
-          <Route exact path='/main' component={() => <Homepage user={this.state.user} />} />
+          <Route exact path='/' component={() => <Homepage user={this.state.user} />} />
           <Route exact path='/general' component={() => <General user={this.state.user} />} />
         </Router>
       </div>
