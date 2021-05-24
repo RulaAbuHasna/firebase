@@ -44,9 +44,14 @@ export default function Homepae({ user }) {
   ) : (
     <div id='note'>
       Please{' '}
-      <a href='./signIn' style={{ color: ' rgb(196, 29, 29' }}>
+      <span
+        style={{ color: ' rgb(196, 29, 29' }}
+        onClick={() => {
+          history.push('./signIn');
+        }}
+      >
         Sign In
-      </a>{' '}
+      </span>{' '}
       to be able to save new blogs, messages and notes and read your prev ones
       🙏
     </div>
