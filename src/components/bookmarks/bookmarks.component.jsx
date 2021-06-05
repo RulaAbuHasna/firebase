@@ -33,8 +33,8 @@ export default function Bookmarks({ userId }) {
       </div>
       <div className='bookmarks'>
         {bookmarks
-          ? bookmarks.map((bookmark) => {
-              return <Card data={bookmark.data()} />;
+          ? bookmarks.map((bookmark, idx) => {
+              return <Card key={idx} data={bookmark.data()} />;
             })
           : null}
       </div>

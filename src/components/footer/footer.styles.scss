@@ -90,4 +90,12 @@
     margin-right: 0;
     font-weight: 600;
   }
+  .site-footer {
+    flex-direction: column;
+    padding: 55px 10px 30px;
+    .section_title {
+      margin-bottom: 0px;
+      margin-top: 20px;
+    }
+  }
 }

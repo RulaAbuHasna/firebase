@@ -21,7 +21,7 @@ export default function Header({ user }) {
                 auth.signOut();
                 history.push('./signIn');
               }}
-              className=''
+              className='signOut'
             >
               Sign Out
             </span>

@@ -11,3 +11,39 @@
     cursor: pointer;
   }
 }
+
+@media screen and (max-width: 812px) and (min-width: 357px) {
+  .first {
+    display: none;
+  }
+  .second {
+    right: 0px;
+    .signOut {
+      margin-right: 223px;
+    }
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 812px) {
+  .first {
+    display: none;
+  }
+  .second {
+    right: 0px;
+    .signOut {
+      margin-right: 150x;
+    }
+  }
+}
+
+@media screen and (min-width: 414px) and (max-width: 812px) {
+  .first {
+    display: none;
+  }
+  .second {
+    right: 0px;
+    .signOut {
+      margin-right: 274px;
+    }
+  }
+}
